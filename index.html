@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultor REBT España 2024</title>
+    <style>
+        :root {
+            --primary-color: #1a56db;
+            --secondary-color: #e0e7ff;
+            --dark-color: #111827;
+            --light-color: #f3f4f6;
+            --success-color: #0e9f6e;
+            --danger-color: #e02424;
+            --border-radius: 0.375rem;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f3f4f6;
+            padding: 0.5rem 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow-x: auto;
+        }
+
+        .nav-tabs li {
+            margin-right: 0.25rem;
+        }
+
+        .nav-tabs a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            transition: background-color 0.3s;
+        }
+
+        .nav-tabs a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .nav-tabs a:hover:not(.active) {
+            background-color: #e5e7eb;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .search-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box {
+            display: flex;
+            width: 100%;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .search-button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #1e429f;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background-color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e429f;
+        }
+
+        .result-container {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+        }
+
+        .alert-info {
+            background-color: #e1effe;
+            border-left: 4px solid #3f83f8;
+        }
+
+        .alert-success {
+            background-color: #def7ec;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .alert-danger {
+            background-color: #fde8e8;
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .accordion {
+            margin-bottom: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+        }
+
+        .accordion-header {
+            background-color: #f9fafb;
+            padding: 1rem;
+            cursor: pointer;
+            border-bottom: 1px solid #d1d5db;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-content {
+            padding: 1rem;
+            display: none;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        table, th, td {
+            border: 1px solid #d1d5db;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f9fafb;
+        }
+
+        .responsive-table {
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .tab-content {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .image-container {
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Consultor REBT España 2024</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul class="nav-tabs">
+                <li><a href="#consulta" class="tab-link active">Consulta REBT</a></li>
+                <li><a href="#calculadora" class="tab-link">Calculadora</a></li>
+                <li><a href="#esquemas" class="tab-link">Esquemas</a></li>
+                <li><a href="#normativa" class="tab-link">Normativa</a></li>
+                <li><a href="#itc" class="tab-link">ITCs</a></li>
+                <li><a href="#telecom" class="tab-link">Telecomunicaciones</a></li>
+                <li><a href="#subir" class="tab-link">Subir Web</a></li>
+                <li><a href="#acerca" class="tab-link">Acerca de</a></li>
+            </ul>
+        </nav>
+
+        <div id="consulta" class="tab-content active">
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" id="search-query" placeholder="Buscar en el REBT (ejemplo: 'caída de tensión', 'sección conductores', etc.)">
+                    <button class="search-button" onclick="searchRBT()">Buscar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Resultados</h2>
+                <div id="search-results"></div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>¿Qué es el REBT?</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>El REBT o Reglamento Electrotécnico de Baja Tensión es un conjunto de normas e instrucciones técnicas complementarias (ITCs) que establecen la regulación de instalaciones eléctricas de baja tensión en España.</p>
+                    <p>El cumplimiento del reglamento en cualquier instalación eléctrica de este tipo es obligatorio, ya que garantiza la seguridad y es requisito indispensable para su homologación.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>Aspectos principales del REBT 2024</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>El REBT 2024 incorpora varias actualizaciones importantes respecto a versiones anteriores:</p>
+                    <ul>
+                        <li>Normativa actualizada para instalaciones fotovoltaicas y autoconsumo (RD 244/2019)</li>
+                        <li>Reglamentación sobre puntos de recarga para vehículos eléctricos (ITC-BT-52)</li>
+                        <li>Actualización de la ITC-BT-03 sobre instaladores autorizados</li>
+                        <li>Nueva normativa sobre Intensidades máximas admisibles (ITC-BT-19)</li>
+                        <li>Actualización de las normas para instalaciones de enlace</li>
+                        <li>Actualizaciones sobre cálculo de conductores en líneas eléctricas aéreas y subterráneas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>Preguntas frecuentes</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <h3>¿Cuáles son las caídas de tensión máximas permitidas según el REBT?</h3>
+                    <ul>
+                        <li>Circuitos interiores de viviendas: 3% de la tensión nominal</li>
+                        <li>Otras instalaciones interiores: 3% para alumbrado y 5% para otros usos</li>
+                        <li>Instalaciones industriales con transformador propio: 4,5% para alumbrado y 6,5% para otros usos</li>
+                    </ul>
+                    
+                    <h3>¿Qué es la línea general de alimentación?</h3>
+                    <p>Es la línea que conecta la Caja General de Protección (CGP) con la centralización de contadores. La caída de tensión máxima permitida es del 0,5%.</p>
+                    
+                    <h3>¿Qué es la derivación individual?</h3>
+                    <p>Es la línea que conecta la centralización de contadores con el cuadro eléctrico de la vivienda. La caída de tensión máxima permitida varía según la configuración:</p>
+                    <ul>
+                        <li>Centralización parcializada: 0,5%</li>
+                        <li>Centralización concentrada: 1%</li>
+                        <li>Suministro para un único usuario: 1,5%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="calculadora" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h2>Calculadora de Caída de Tensión</h2>
+                    <div class="form-group">
+                        <label for="tipo-sistema">Tipo de sistema:</label>
+                        <select id="tipo-sistema" class="form-select">
+                            <option value="monofasico">Monofásico (230V)</option>
+                            <option value="trifasico">Trifásico (400V)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="potencia">Potencia (W):</label>
+                        <input type="number" id="potencia" class="form-control" placeholder="Ejemplo: 3500">
+                    </div>
+                    <div class="form-group">
+                        <label for="longitud">Longitud del cable (m):</label>
+                        <input type="number" id="longitud" class="form-control" placeholder="Ejemplo: 15">
+                    </div>
+                    <div class="form-group">
+                        <label for="conductor">Material del conductor:</label>
+                        <select id="conductor" class="form-select">
+                            <option value="cobre">Cobre (56 m/Ω·mm²)</option>
+                            <option value="aluminio">Aluminio (35 m/Ω·mm²)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="seccion">Sección del conductor (mm²):</label>
+                        <select id="seccion" class="form-select">
+                            <option value="1.5">1.5 mm²</option>
+                            <option value="2.5">2.5 mm²</option>
+                            <option value="4">4 mm²</option>
+                            <option value="6">6 mm²</option>
+                            <option value="10">10 mm²</option>
+                            <option value="16">16 mm²</option>
+                            <option value="25">25 mm²</option>
+                            <option value="35">35 mm²</option>
+                            <option value="50">50 mm²</option>
+                            <option value="70">70 mm²</option>
+                            <option value="95">95 mm²</option>
+                            <option value="120">120 mm²</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fdp">Factor de potencia (cos φ):</label>
+                        <input type="number" id="fdp" class="form-control" value="0.85" min="0.1" max="1" step="0.01">
+                    </div>
+                    <button class="btn btn-primary" onclick="calcularCaidaTension()">Calcular</button>
+                    <div id="resultado-caida" class="result-container" style="display: none;"></div>
+                </div>
+                
+                <div class="card">
+                    <h2>Calculadora de Sección de Cable</h2>
+                    <div class="form-group">
+                        <label for="tipo-sistema-seccion">Tipo de sistema:</label>
+                        <select id="tipo-sistema-seccion" class="form-select">
+                            <option value="monofasico">Monofásico (230V)</option>
+                            <option value="trifasico">Trifásico (400V)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="potencia-seccion">Potencia (W):</label>
+                        <input type="number" id="potencia-seccion" class="form-control" placeholder="Ejemplo: 3500">
+                    </div>
+                    <div class="form-group">
+                        <label for="longitud-seccion">Longitud del cable (m):</label>
+                        <input type="number" id="longitud-seccion" class="form-control" placeholder="Ejemplo: 15">
+                    </div>
+                    <div class="form-group">
+                        <label for="conductor-seccion">Material del conductor:</label>
+                        <select id="conductor-seccion" class="form-select">
+                            <option value="cobre">Cobre (56 m/Ω·mm²)</option>
+                            <option value="aluminio">Aluminio (35 m/Ω·mm²)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="caida-tension-max">Caída de tensión máxima (%):</label>
+                        <select id="caida-tension-max" class="form-select">
+                            <option value="0.5">0.5% (LGA)</option>
+                            <option value="1">1% (DI centralizada)</option>
+                            <option value="1.5">1.5% (DI usuario único)</option>
+                            <option value="3" selected>3% (Circ. interiores/alumbrado)</option>
+                            <option value="5">5% (Circ. otros usos)</option>
+                            <option value="4.5">4.5% (Ind. con trafo - alumbrado)</option>
+                            <option value="6.5">6.5% (Ind. con trafo - otros usos)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fdp-seccion">Factor de potencia (cos φ):</label>
+                        <input type="number" id="fdp-seccion" class="form-control" value="0.85" min="0.1" max="1" step="0.01">
+                    </div>
+                    <button class="btn btn-primary" onclick="calcularSeccionCable()">Calcular</button>
+                    <div id="resultado-seccion" class="result-container" style="display: none;"></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Límites de Caída de Tensión según REBT</h2>
+                <div class="responsive-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tipo de instalación</th>
+                                <th>Alumbrado</th>
+                                <th>Otros usos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Línea General de Alimentación (LGA)</td>
+                                <td colspan="2">0.5%</td>
+                            </tr>
+                            <tr>
+                                <td>Derivación Individual (DI) - Centralización parcializada</td>
+                                <td colspan="2">0.5%</td>
+                            </tr>
+                            <tr>
+                                <td>Derivación Individual (DI) - Centralización concentrada</td>
+                                <td colspan="2">1%</td>
+                            </tr>
+                            <tr>
+                                <td>Derivación Individual (DI) - Suministro único</td>
+                                <td colspan="2">1.5%</td>
+                            </tr>
+                            <tr>
+                                <td>Circuitos interiores en viviendas</td>
+                                <td colspan="2">3%</td>
+                            </tr>
+                            <tr>
+                                <td>Otras instalaciones interiores</td>
+                                <td>3%</td>
+                                <td>5%</td>
+                            </tr>
+                            <tr>
+                                <td>Instalaciones industriales con transformador propio</td>
+                                <td>4.5%</td>
+                                <td>6.5%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="esquemas" class="tab-content">
+            <div class="card">
+                <h2>Esquemas Eléctricos</h2>
+                <p>Aquí encontrará ejemplos de esquemas eléctricos según la normativa del REBT.</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Esquema Unifilar Vivienda - Grado de Electrificación Básica</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Este esquema representa una instalación eléctrica para vivienda con grado de electrificación básica (5750W) según el REBT.</p>
+                        <div class="image-container">
+                            <img src="/api/placeholder/800/500" alt="Esquema Unifilar Electrificación Básica">
+                        </div>
+                        <p>Componentes principales:</p>
+                        <ul>
+                            <li>IGA: Interruptor General Automático (25A)</li>
+                            <li>ID: Interruptor Diferencial (25A, 30mA)</li>
+                            <li>C1: Circuito de iluminación (10A)</li>
+                            <li>C2: Circuito tomas de corriente de uso general (16A)</li>
+                            <li>C3: Circuito cocina y horno (25A)</li>
+                            <li>C4: Circuito lavadora, lavavajillas y termo (20A)</li>
+                            <li>C5: Circuito tomas de corriente baño y cocina (16A)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Esquema Unifilar Vivienda - Grado de Electrificación Elevada</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Este esquema representa una instalación eléctrica para vivienda con grado de electrificación elevada (9200W) según el REBT.</p>
+                        <div class="image-container">
+                            <img src="/api/placeholder/800/500" alt="Esquema Unifilar Electrificación Elevada">
+                        </div>
+                        <p>Además de los circuitos básicos (C1 a C5), incluye:</p>
+                        <ul>
+                            <li>C6: Circuito adicional de iluminación</li>
+                            <li>C7: Circuito adicional de tomas de corriente uso general</li>
+                            <li>C8: Circuito de calefacción eléctrica</li>
+                            <li>C9: Circuito de aire acondicionado</li>
+                            <li>C10: Circuito de secadora</li>
+                            <li>C11: Circuito de automatización</li>
+                            <li>C12: Circuito adicional de tomas de corriente</li>
+                            <li>C13: Circuito para puntos de recarga de vehículo eléctrico</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Esquema de Instalación Fotovoltaica</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Esquema básico de una instalación fotovoltaica para autoconsumo según normativa vigente.</p>
+                        <div class="image-container">
+                            <img src="/api/placeholder/800/500" alt="Esquema Instalación Fotovoltaica">
+                        </div>
+                        <p>Componentes principales:</p>
+                        <ul>
+                            <li>Paneles fotovoltaicos</li>
+                            <li>Inversor</li>
+                            <li>Protecciones DC/AC</li>
+                            <li>Contador bidireccional</li>
+                            <li>Conexión a red</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Simbología Eléctrica</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Símbolos eléctricos según la norma UNE-EN 60617 para la representación de esquemas eléctricos.</p>
+                        <h4>Dispositivos de protección</h4>
+                        <table>
+                            <tr>
+                                <th>Símbolo</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><img src="/api/placeholder/50/50" alt="Símbolo IGA"></td>
+                                <td>Interruptor General Automático (IGA)</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/api/placeholder/50/50" alt="Símbolo ID"></td>
+                                <td>Interruptor Diferencial (ID)</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/api/placeholder/50/50" alt="Símbolo PIA"></td>
+                                <td>Pequeño Interruptor Automático (PIA)</td>
+                            </tr>
+                        </table>
+                        
+                        <h4>Conductores y conexiones</h4>
+                        <table>
+                            <tr>
+                                <th>Símbolo</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><img src="/api/placeholder/50/50" alt="Símbolo línea"></td>
+                                <td>Línea o conductor</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/api/placeholder/50/50" alt="Símbolo conexión"></td>
+                                <td>Punto de conexión</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/api/placeholder/50/50" alt="Símbolo cruce sin conexión"></td>
+                                <td>Cruce de líneas sin conexión</td>
+                            </tr>
+                        </table>
+                        
+                        <h4>Receptores</h4>
+                        <table>
+                            <tr>
+                                <th>Símbolo</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td><img src="/api/placeholder/50/50" alt="Símbolo punto de luz"></td>
+                                <td>Punto de luz</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/api/placeholder/50/50" alt="Símbolo toma corriente"></td>
+                                <td>Toma de corriente</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/api/placeholder/50/50" alt="Símbolo motor"></td>
+                                <td>Motor</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="normativa" class="tab-content">
+            <div class="card">
+                <h2>Normativa REBT 2024</h2>
+                <p>El Reglamento Electrotécnico para Baja Tensión (REBT) de España, actualizado para 2024, regula las instalaciones eléctricas de baja tensión. A continuación se detallan los principales documentos normativos y actualizaciones:</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Real Decreto 842/2002</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Documento base que aprueba el Reglamento Electrotécnico para Baja Tensión y sus Instrucciones Técnicas Complementarias (ITC-BT-01 a ITC-BT-52).</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Real Decreto 560/2010</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Adecuación de normativas en materia de seguridad industrial para adaptarse a la Ley Ómnibus.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Real Decreto 1053/2014</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Establece requisitos y condiciones técnicas básicas para la infraestructura de recarga de vehículos eléctricos (ITC-BT-52).</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Real Decreto 244/2019</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Regulación de condiciones administrativas, técnicas y económicas del autoconsumo de energía eléctrica.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Real Decreto 542/2020</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Modificaciones varias al REBT.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Real Decreto 298/2021</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Modifica la ITC-BT-03 sobre instaladores autorizados.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Real Decreto-Ley 29/2021</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Medidas urgentes en materia energética.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Real Decreto 450/2022</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Modifica la ITC-BT-52 sobre infraestructuras para recarga de vehículos eléctricos.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Real Decreto 145/2023</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Actualizaciones varias al REBT.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Resolución 9 de enero de 2020</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Actualiza el listado de normas de la instrucción técnica complementaria ITC-BT-02.</p>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <p>Según fuentes del sector, se está trabajando en una nueva versión del REBT que podría publicarse a principios de 2025, con énfasis en las nuevas tecnologías como autoconsumo fotovoltaico, vehículo eléctrico y aerotermia.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="itc" class="tab-content">
+            <div class="card">
+                <h2>Instrucciones Técnicas Complementarias (ITCs)</h2>
+                <p>Las Instrucciones Técnicas Complementarias (ITCs) del REBT proporcionan detalles específicos para diferentes tipos de instalaciones. A continuación se presentan algunas de las más relevantes:</p>
+                
+                <div class="alert alert-info">
+                    <p>Seleccione una ITC para ver su información específica.</p>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>ITC-BT-01: Terminología</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Define los términos técnicos utilizados en el REBT.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>ITC-BT-02: Normas de referencia</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Lista las normas UNE de referencia citadas en el REBT.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>ITC-BT-03: Instaladores autorizados</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Establece los requisitos para los instaladores autorizados en baja tensión.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>ITC-BT-14: Línea General de Alimentación</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Regula las líneas generales de alimentación. Establece una caída de tensión máxima del 0,5%.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>ITC-BT-15: Derivaciones Individuales</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Establece requisitos para las derivaciones individuales. Define caídas de tensión máximas según la configuración: 0,5% para centralizaciones parcializadas, 1% para centralizaciones concentradas y 1,5% para suministro único.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>ITC-BT-19: Instalaciones interiores o receptoras</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Establece prescripciones de carácter general para instalaciones interiores o receptoras. Define caídas de tensión máximas: 3% para alumbrado y 5% para otros usos.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>ITC-BT-28: Instalaciones en locales de pública concurrencia</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Regula las instalaciones en locales de pública concurrencia. Incluye requisitos de seguridad específicos.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>ITC-BT-40: Instalaciones generadoras de baja tensión</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Establece requisitos para instalaciones generadoras de baja tensión, aplicable a instalaciones fotovoltaicas y de autoconsumo.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>ITC-BT-52: Infraestructuras para recarga de vehículos eléctricos</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Regula las infraestructuras para la recarga de vehículos eléctricos. Ha sido actualizada por el RD 450/2022.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="telecom" class="tab-content">
+            <div class="card">
+                <h2>Infraestructuras Comunes de Telecomunicaciones (ICT)</h2>
+                <p>Información sobre normativa de telecomunicaciones en edificios según la reglamentación vigente en España.</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>¿Qué es una ICT?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Las Infraestructuras Comunes de Telecomunicaciones (ICT) son instalaciones necesarias para captar, adaptar y distribuir señales de radiodifusión, televisión y otros servicios de telecomunicación en el interior de edificios.</p>
+                        <p>Están reguladas por el Real Decreto 346/2011 y la Orden ITC/1644/2011, que establecen el Reglamento regulador y las especificaciones técnicas.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Normativa ICT vigente</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Ley 11/2022, de 28 de junio</strong>: Ley General de Telecomunicaciones.</li>
+                            <li><strong>Real Decreto 346/2011, de 11 de marzo</strong>: Reglamento regulador de las ICT.</li>
+                            <li><strong>Orden ITC/1644/2011, de 10 de junio</strong>: Desarrolla el reglamento de ICT.</li>
+                            <li><strong>Orden ECE/983/2019, de 26 de septiembre</strong>: Regula características de reacción al fuego de los cables de telecomunicaciones y modifica anexos del RD 346/2011.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Elementos de una ICT</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Red de radiodifusión sonora y televisión</h4>
+                        <ul>
+                            <li>Elementos de captación (antenas)</li>
+                            <li>Equipamiento de cabecera</li>
+                            <li>Red de distribución</li>
+                            <li>Puntos de acceso al usuario (PAU)</li>
+                            <li>Red interior de usuario</li>
+                            <li>Tomas de usuario</li>
+                        </ul>
+                        
+                        <h4>Red de telefonía y banda ancha</h4>
+                        <ul>
+                            <li>Registro principal</li>
+                            <li>Red de distribución</li>
+                            <li>Puntos de distribución</li>
+                            <li>Red de dispersión</li>
+                            <li>Red interior de usuario</li>
+                            <li>Bases de acceso terminal (BAT)</li>
+                        </ul>
+                        
+                        <h4>Infraestructura de obra civil</h4>
+                        <ul>
+                            <li>Recintos de instalaciones de telecomunicación (RITI, RITS)</li>
+                            <li>Registros secundarios</li>
+                            <li>Canalizaciones</li>
+                            <li>Registros de terminación de red</li>
+                            <li>Registros de toma</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Esquema general de una ICT</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Esquema básico de una Infraestructura Común de Telecomunicaciones en un edificio de viviendas.</p>
+                        <div class="image-container">
+                            <img src="/api/placeholder/800/600" alt="Esquema general ICT">
+                        </div>
+                        <p>Principales elementos identificados en el esquema:</p>
+                        <ol>
+                            <li>Elementos de captación (antenas)</li>
+                            <li>RITS (Recinto de Instalaciones de Telecomunicaciones Superior)</li>
+                            <li>Canalización principal vertical</li>
+                            <li>Registros secundarios por planta</li>
+                            <li>Canalizaciones secundarias</li>
+                            <li>PAU (Punto de Acceso al Usuario)</li>
+                            <li>Canalizaciones interiores de usuario</li>
+                            <li>Tomas de usuario</li>
+                            <li>RITI (Recinto de Instalaciones de Telecomunicaciones Inferior)</li>
+                            <li>Arqueta de entrada</li>
+                            <li>Canalización externa</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Procedimiento para implantar una ICT</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ol>
+                            <li><strong>Proyecto técnico</strong>: Redactado por un titulado universitario con competencias en materia de ICT.</li>
+                            <li><strong>Verificación del proyecto</strong> (opcional): Por una entidad de verificación acreditada por ENAC.</li>
+                            <li><strong>Presentación del proyecto</strong>: Junto con el proyecto arquitectónico para obtener la licencia de construcción.</li>
+                            <li><strong>Ejecución de la instalación</strong>: Por una empresa instaladora inscrita en el registro correspondiente.</li>
+                            <li><strong>Certificación</strong>: Boletín de instalación, protocolo de pruebas y certificado fin de obra.</li>
+                            <li><strong>Presentación de documentación</strong>: A través de la sede electrónica de la Secretaría de Estado.</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Dimensionamiento de canalizaciones</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Canalizaciones principales</h4>
+                        <table>
+                            <tr>
+                                <th>N° de PAU</th>
+                                <th>N° de tubos</th>
+                                <th>Diámetro (mm)</th>
+                                <th>Utilización</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="5">Hasta 10</td>
+                                <td>1</td>
+                                <td>50</td>
+                                <td>RTV</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>50</td>
+                                <td>Cables de pares/pares trenzados</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>50</td>
+                                <td>Cables coaxiales</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>50</td>
+                                <td>Cables de fibra óptica</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>50</td>
+                                <td>Reserva</td>
+                            </tr>
+                        </table>
+                        
+                        <h4>Registros secundarios</h4>
+                        <table>
+                            <tr>
+                                <th>N° de PAU por planta</th>
+                                <th>Dimensiones (mm)</th>
+                            </tr>
+                            <tr>
+                                <td>Hasta 3</td>
+                                <td>450 x 450 x 150</td>
+                            </tr>
+                            <tr>
+                                <td>De 4 a 6</td>
+                                <td>500 x 700 x 150</td>
+                            </tr>
+                            <tr>
+                                <td>Más de 6</td>
+                                <td>550 x 1000 x 150</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="subir" class="tab-content">
+            <div class="card">
+                <h2>Cómo subir esta aplicación a un hosting gratuito</h2>
+                <p>Guía paso a paso para publicar esta aplicación web en un servicio de hosting gratuito.</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Paso 1: Descargar los archivos</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Para comenzar, necesitas descargar todos los archivos de esta aplicación a tu ordenador:</p>
+                        <ol>
+                            <li>Haz clic derecho en cualquier parte de la página y selecciona "Guardar como..." o "Guardar página como..."</li>
+                            <li>Guarda el archivo HTML completo en tu ordenador</li>
+                            <li>Crea una carpeta llamada "rebt-app" para mantener tus archivos organizados</li>
+                        </ol>
+                        <p>Si la aplicación tuviera imágenes o archivos CSS/JS externos, también deberías guardarlos, pero en este caso todo está incluido en un único archivo HTML.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Paso 2: Elegir un servicio de hosting gratuito</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Existen varios servicios de hosting gratuito donde puedes subir tu aplicación. Algunas opciones recomendadas son:</p>
+                        
+                        <h4>GitHub Pages</h4>
+                        <p>Perfecto para sitios estáticos como esta aplicación HTML.</p>
+                        <ul>
+                            <li>Ventajas: Confiable, rápido, soporte para dominio personalizado, certificado SSL gratis</li>
+                            <li>Limitaciones: Solo para sitios estáticos (HTML, CSS, JavaScript)</li>
+                            <li>Enlace: <a href="https://pages.github.com/" target="_blank">https://pages.github.com/</a></li>
+                        </ul>
+                        
+                        <h4>Netlify</h4>
+                        <p>Plataforma para sitios estáticos con despliegue continuo.</p>
+                        <ul>
+                            <li>Ventajas: Fácil de usar, integración con Git, dominio personalizado, SSL gratis</li>
+                            <li>Limitaciones: Solo para sitios estáticos</li>
+                            <li>Enlace: <a href="https://www.netlify.com/" target="_blank">https://www.netlify.com/</a></li>
+                        </ul>
+                        
+                        <h4>000webhost</h4>
+                        <p>Hosting gratuito con soporte para PHP y MySQL.</p>
+                        <ul>
+                            <li>Ventajas: Soporte para PHP, base de datos MySQL, panel de control</li>
+                            <li>Limitaciones: Anuncios, tiempo de inactividad, recursos limitados</li>
+                            <li>Enlace: <a href="https://www.000webhost.com/" target="_blank">https://www.000webhost.com/</a></li>
+                        </ul>
+                        
+                        <h4>Firebase Hosting</h4>
+                        <p>Servicio de Google para sitios web estáticos.</p>
+                        <ul>
+                            <li>Ventajas: Alto rendimiento, SSL gratis, CDN global</li>
+                            <li>Limitaciones: Solo para sitios estáticos</li>
+                            <li>Enlace: <a href="https://firebase.google.com/docs/hosting" target="_blank">https://firebase.google.com/docs/hosting</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Paso 3: Subir a GitHub Pages (Recomendado)</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>GitHub Pages es una de las opciones más sencillas para principiantes:</p>
+                        
+                        <ol>
+                            <li><strong>Crear una cuenta en GitHub</strong>:
+                                <ul>
+                                    <li>Ve a <a href="https://github.com/" target="_blank">https://github.com/</a> y regístrate</li>
+                                    <li>Confirma tu dirección de correo electrónico</li>
+                                </ul>
+                            </li>
+                            <li><strong>Crear un nuevo repositorio</strong>:
+                                <ul>
+                                    <li>Haz clic en el botón "+" en la esquina superior derecha y selecciona "New repository"</li>
+                                    <li>Nombre el repositorio como "rebt-app" o cualquier otro nombre</li>
+                                    <li>Mantén el repositorio como "Public"</li>
+                                    <li>Haz clic en "Create repository"</li>
+                                </ul>
+                            </li>
+                            <li><strong>Subir archivos</strong>:
+                                <ul>
+                                    <li>En la página del repositorio, haz clic en "uploading an existing file"</li>
+                                    <li>Arrastra y suelta o selecciona tu archivo HTML (renómbralo a "index.html" si no lo está ya)</li>
+                                    <li>Haz clic en "Commit changes"</li>
+                                </ul>
+                            </li>
+                            <li><strong>Configurar GitHub Pages</strong>:
+                                <ul>
+                                    <li>Ve a la pestaña "Settings" del repositorio</li>
+                                    <li>Desplázate hacia abajo hasta la sección "GitHub Pages"</li>
+                                    <li>En la fuente (Source), selecciona "main" como rama y "/" (root) como carpeta</li>
+                                    <li>Haz clic en "Save"</li>
+                                </ul>
+                            </li>
+                            <li><strong>Acceder a tu sitio</strong>:
+                                <ul>
+                                    <li>Después de unos minutos, tu sitio estará disponible en https://[tu-nombre-de-usuario].github.io/rebt-app/</li>
+                                    <li>La URL exacta se mostrará en la sección GitHub Pages de la configuración</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Paso 4: Subir a 000webhost (Alternativa)</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Si prefieres un servicio de hosting tradicional, 000webhost es una buena opción gratuita:</p>
+                        
+                        <ol>
+                            <li><strong>Crear una cuenta</strong>:
+                                <ul>
+                                    <li>Ve a <a href="https://www.000webhost.com/" target="_blank">https://www.000webhost.com/</a> y regístrate</li>
+                                    <li>Verifica tu correo electrónico</li>
+                                </ul>
+                            </li>
+                            <li><strong>Crear un sitio web</strong>:
+                                <ul>
+                                    <li>Inicia sesión y haz clic en "Create Website"</li>
+                                    <li>Selecciona "Upload your site"</li>
+                                    <li>Elige un nombre para tu sitio y haz clic en "Create"</li>
+                                </ul>
+                            </li>
+                            <li><strong>Subir archivos</strong>:
+                                <ul>
+                                    <li>En el panel de control, ve a "File Manager"</li>
+                                    <li>Navega hasta la carpeta "public_html"</li>
+                                    <li>Haz clic en "Upload Files" y selecciona tu archivo HTML (renómbralo a "index.html" si no lo está ya)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Acceder a tu sitio</strong>:
+                                <ul>
+                                    <li>Tu sitio estará disponible en https://[nombre-de-tu-sitio].000webhostapp.com/</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Consejos y solución de problemas</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Problemas comunes y soluciones</h4>
+                        <ul>
+                            <li><strong>Las imágenes no se cargan</strong>: En esta aplicación, las imágenes son placeholders. Si quisieras añadir imágenes reales, asegúrate de subirlas junto con el archivo HTML y actualizar las rutas.</li>
+                            <li><strong>Error 404</strong>: Verifica que el archivo se llame "index.html" y esté en la ubicación correcta (carpeta raíz del repositorio o la carpeta public_html).</li>
+                            <li><strong>La aplicación no responde correctamente</strong>: Asegúrate de que el archivo HTML incluye todo el código, incluyendo el JavaScript al final.</li>
+                        </ul>
+                        
+                        <h4>Personalizaciones</h4>
+                        <ul>
+                            <li><strong>Añadir un dominio personalizado</strong>: Tanto GitHub Pages como 000webhost permiten conectar un dominio personalizado si lo tienes.</li>
+                            <li><strong>Modificar contenido</strong>: Puedes editar el archivo HTML con un editor de texto como Notepad++, Visual Studio Code o similar antes de subirlo.</li>
+                            <li><strong>Añadir más secciones</strong>: Sigue el formato existente para añadir nuevas pestañas o contenido a la aplicación.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="acerca" class="tab-content">
+            <div class="card">
+                <h2>Acerca de esta aplicación</h2>
+                <p>Esta aplicación ha sido desarrollada para facilitar la consulta del Reglamento Electrotécnico de Baja Tensión (REBT) de España 2024 y proporcionar herramientas útiles para profesionales del sector eléctrico.</p>
+                <p>Las herramientas incluidas en esta aplicación están basadas en la normativa vigente y son meramente orientativas. Para cualquier instalación eléctrica, siempre se debe consultar la normativa oficial y contar con profesionales cualificados.</p>
